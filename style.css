@@ -9,7 +9,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #E3F2FD;
+  background: #ddd;
 }
 .container {
   width: 70vmin;
@@ -23,7 +23,7 @@ body {
   box-shadow: 0 20px 40px rgba(52, 87, 220, 0.2);
 }
 .scores-container {
-  color: #B8C6DC;
+  color: #ddd;
   font-weight: 500;
   font-size: 1.2rem;
   padding: 20px 25px;
