@@ -37,3 +37,7 @@ body {
   background: #22272E;
   grid-template: repeat(30, 1fr) / repeat(30, 1fr);
 }
+
+.food {
+  background-color: rgb(243, 46, 46);
+}
