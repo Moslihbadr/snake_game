@@ -1,20 +1,36 @@
 let score = document.getElementById('score');
 let highScore = document.getElementById('high-score');
 let gameBoard = document.querySelector('.gameBoard');
+let foodX ,foodY;
+let headX ,headY;
 
-function updatePosition() {
-  let x = Math.round(Math.random() * 30);
-  let y = Math.round(Math.random() * 30);
-  return [x, y]; // return an array with both x and y values
+// change the food position randomly from 1 to 30
+function changeFoodPosition() {
+  foodX = Math.floor(Math.random() * 30) + 1;
+  foodY = Math.floor(Math.random() * 30) + 1;
 }
 
-let foodPosition = updatePosition();
-let foodX = foodPosition[0];
-let foodY = foodPosition[1];
-
-function drawFood(x,y) {
-  return `<span class="head" style="grid-template-area:${y} / ${x}"></span>`;
+// change the head position randomly from 1 to 30
+function changeHeadPosition() {
+  headX = Math.floor(Math.random() * 30) + 1;
+  headY = Math.floor(Math.random() * 30) + 1;
 }
 
-// drawSnake(headY, headX);
-gameBoard.innerHTML = `<span class="food" style="grid-area:${foodY} / ${foodX}"></span>`;
+// draw the food
+function drawFood() {
+  gameBoard.innerHTML += `<span class="food" style="grid-area:${foodY} / ${foodX}"></span>`;
+}
+
+// draw the sanke
+function drawSnake() {
+  gameBoard.innerHTML += `<span class="head" style="grid-area:${headY} / ${headX}"></span>`;
+}
+
+function init() {
+  drawFood();
+  drawSnake();
+}
+
+changeFoodPosition();
+changeHeadPosition();
+init();
