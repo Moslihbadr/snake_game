@@ -8,13 +8,8 @@ let snake = [];
 let score = 0;
 let highScore = localStorage.getItem('high-score');
 
-// Update the score and highScore elements with their initial values
-scoreElement.innerText = score;
-highScoreElement.innerText = highScore;
 
-
-
-// Update the score and highScore elements to be integers
+// Update the score and highScore elements
 function updateScore() {
   scoreElement.innerText = score;
   highScoreElement.innerText = highScore;
@@ -96,6 +91,7 @@ function updateGame() {
 
     // increment the score
     score ++
+
     // Check if there is a high score stored in localStorage
     if (localStorage.getItem('high-score')) {
       // Retrieve the high score from localStorage
@@ -122,6 +118,7 @@ function init() {
   drawGameBoard();
   setInterval(updateGame, 300);
   move();
+  updateScore()
 }
 
 init();
