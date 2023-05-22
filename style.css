@@ -40,8 +40,10 @@ body {
 
 .food {
   background-color: rgb(243, 46, 46);
+  border-radius: 3px;
 }
 
 .head {
   background-color: rgb(46, 243, 85);
+  border-radius: 3px;
 }
