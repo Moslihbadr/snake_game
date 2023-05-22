@@ -1,10 +1,29 @@
-let score = document.getElementById('score');
-let highScore = document.getElementById('high-score');
+let scoreElement  = document.getElementById('score');
+let highScoreElement = document.getElementById('high-score');
 let gameBoard = document.querySelector('.gameBoard');
 let foodX, foodY;
 let headX, headY;
 let x = 0, y = 0;
 let snake = [];
+let score = 0;
+let highScore = localStorage.getItem('high-score');
+
+
+// Update the score and highScore elements
+function updateScore() {
+  scoreElement.innerText = score;
+  highScoreElement.innerText = highScore;
+}
+
+// Update the high score if the current score exceeds it
+function updateHighScore() {
+  if (score > highScore) {
+    highScore = score;
+    highScoreElement.innerText = highScore;
+    localStorage.setItem('high-score', highScore);
+  }
+}
+
 
 // Change the food position randomly from 1 to 30
 function changeFoodPosition() {
@@ -69,6 +88,20 @@ function updateGame() {
   if (headX === foodX && headY === foodY) {
     // Add a new body part to the snake
     snake.push([foodX, foodY]);
+
+    // increment the score
+    score ++
+
+    // Check if there is a high score stored in localStorage
+    if (localStorage.getItem('high-score')) {
+      // Retrieve the high score from localStorage
+      highScore = parseInt(localStorage.getItem('high-score'));
+
+      // Update the highScore variable
+      highScoreElement.innerText = highScore;
+    }
+    updateScore();
+    updateHighScore();
     
     // Generate a new food position
     changeFoodPosition();
@@ -85,6 +118,7 @@ function init() {
   drawGameBoard();
   setInterval(updateGame, 300);
   move();
+  updateScore()
 }
 
 init();
