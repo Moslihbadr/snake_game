@@ -41,20 +41,40 @@ function move() {
 function drawGameBoard() {
   let boardHTML = '';
   boardHTML += `<span class="food" style="grid-area:${foodY} / ${foodX}"></span>`;
-  boardHTML += `<span class="head" style="grid-area:${headY} / ${headX}"></span>`;
+
+  // Update the position of each segment of the snake's body
+  for (let i = snake.length - 1; i > 0; i--) {
+    snake[i] = snake[i-1];
+  }
+
+  // Set the position of the snake's head
+  snake[0] = [headX , headY];
+
+  // Add an HTML element for each segment of the snake's body to the board  
+  for (let i = 0; i < snake.length; i++) {
+    boardHTML += `<span class="head" style="grid-area:${snake[i][1]} / ${snake[i][0]}"></span>`;
+  }
+
+  // Update the game board on the screen with the new positions of the snake and the food
   gameBoard.innerHTML = boardHTML;
 }
 
 // Update the snake's position and draw the game board
 function updateGame() {
+  // Update the head position
   headX += x;
   headY += y;
+
+  // Check if the head position matches the food position
   if (headX === foodX && headY === foodY) {
-    snake.push({
-      x:headX, y:headY
-    })
+    // Add a new body part to the snake
+    snake.push([foodX, foodY]);
+    
+    // Generate a new food position
     changeFoodPosition();
   }
+
+  // Draw the game board with updated positions
   drawGameBoard();
 }
 
