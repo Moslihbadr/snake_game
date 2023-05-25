@@ -7,6 +7,7 @@ let x = 0, y = 0;
 let snake = [];
 let score = 0;
 let highScore = localStorage.getItem('high-score');
+let gameOver = false;
 
 
 // Update the score and highScore elements
