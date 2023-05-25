@@ -1,5 +1,7 @@
 let scoreElement  = document.getElementById('score');
 let highScoreElement = document.getElementById('high-score');
+let scoreElement  = document.getElementById('score');
+let highScoreElement = document.getElementById('high-score');
 let gameBoard = document.querySelector('.gameBoard');
 let foodX, foodY;
 let headX, headY;
